@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ChatWindowComponent } from './chat-window/chat-window.component';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'chatbot-app';
+  @ViewChild(ChatWindowComponent) chatWindow!: ChatWindowComponent;
+
+  toggleChat() {
+    this.chatWindow.toggleChat();
+  }
 }

@@ -1,0 +1,4 @@
+<div [ngClass]="{'self-end bg-blue-500 text-white': message.sender === 'user', 'self-start bg-gray-300': message.sender === 'bot'}"
+     class="my-2 p-3 rounded-md max-w-xs">
+  {{ message.text }}
+</div>
