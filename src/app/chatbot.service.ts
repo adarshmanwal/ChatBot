@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface ChatResponse {
@@ -10,11 +10,12 @@ interface ChatResponse {
   providedIn: 'root'
 })
 export class ChatbotService {
-  private apiUrl = 'https://your-chatbot-api.com/respond'; // Replace with your chatbot API URL
+  private apiUrl = 'http://127.0.0.1:8000/api/ai_respond/'; // Replace with your chatbot API URL
 
   constructor(private http: HttpClient) {}
 
   sendMessage(message: string): Observable<ChatResponse> {
-    return this.http.post<ChatResponse>(this.apiUrl, { message });
+    const params = new HttpParams().set('message', message);
+    return this.http.get<ChatResponse>(this.apiUrl, { params });
   }
 }
